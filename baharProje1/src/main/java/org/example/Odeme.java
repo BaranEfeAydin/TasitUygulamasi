@@ -4,9 +4,9 @@ public abstract class Odeme {
     private double bakiye;
     private double indirimOrani;
 
-    public Odeme(double bakiye) {
+    public Odeme(double bakiye, double indirimOrani) {
         this.bakiye = bakiye;
-        this.indirimOrani = 1;
+        this.indirimOrani = indirimOrani;
     }
 
     public double getBakiye() {
@@ -21,16 +21,13 @@ public abstract class Odeme {
         return indirimOrani;
     }
 
-    public void setIndirimOrani(double indirimOrani) {
-        this.indirimOrani = indirimOrani;
-    }
-
-    public double odemeYap(double tutar,double yolcuIndirimOrani){
-        if(bakiye>tutar){
-            bakiye -=(tutar*indirimOrani*yolcuIndirimOrani);
+    public double odemeYap(double tutar) {
+        if (bakiye >= tutar) {
+            bakiye -= tutar;
             return bakiye;
+        } else {
+            System.out.println("Yetersiz bakiye!");
+            return 0;
         }
-        return 0;
     }
-
 }

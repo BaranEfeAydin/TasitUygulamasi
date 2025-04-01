@@ -2,6 +2,7 @@ package org.example;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import javax.swing.*;
 import java.io.File;
 import java.util.List;
 import java.util.Map;
@@ -57,6 +58,9 @@ public class Main {
 
         List<RotaBilgisi> yollar = RotaHesaplayici.tumYollariBul(id.getId(), sd.getId(), kent.getDuraklar());
 
+        KentKart kentKart= new KentKart(150.0);
+        System.out.println(kentKart.getBakiye());
+
         for (int i = 0; i < yollar.size(); i++) {
             RotaBilgisi rota = yollar.get(i);
             System.out.println("Rota " + (i + 1) + ": " + String.join(" → ", rota.getDuraklar()));
@@ -64,12 +68,20 @@ public class Main {
                 System.out.println(g.getBaslangic() + " → " + g.getHedef() +
                         " (Ücret: " + g.getUcret() + " TL, Mesafe: " + g.getMesafe() + " km, Süre: " + g.getSure() + " dk)");
             }
-            System.out.println("Toplam Ücret: " + (rota.getToplamUcret()) * ö1.getIndirimOrani() + " TL");
+            System.out.println(kentKart.getBakiye());
+            System.out.println("Toplam ücret indirimli: "+(UcretHesabi.hesapla(kentKart.getIndirimOrani(),ö1.getIndirimOrani(),rota.getToplamUcret())));
             System.out.println("Toplam Ücret İndirimsiz: " + rota.getToplamUcret() + " TL");
             System.out.println("Toplam Mesafe: " + rota.getToplamMesafe() + " km");
             System.out.println("Toplam Süre: " + rota.getToplamSure() + " dk");
             System.out.println("-------------------------------------------------");
         }
+        RotaBilgisi sonRota = yollar.get(yollar.size() - 1); // Son rota nesnesi
+        double kalanBakiye = kentKart.odemeYap(UcretHesabi.hesapla(kentKart.getIndirimOrani(), ö1.getIndirimOrani(), sonRota.getToplamUcret()));
+        System.out.println("Kalan bakiye: " + kalanBakiye + " TL");
+
+        SwingUtilities.invokeLater(() -> {
+            new SeyahatPlanlayici().baslat();
+        });
 
         scanner.close();
     }
