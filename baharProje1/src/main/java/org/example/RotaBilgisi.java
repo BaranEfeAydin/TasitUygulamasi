@@ -3,8 +3,8 @@ package org.example;
 import java.util.*;
 
 public class RotaBilgisi {
-    private List<String> duraklar;  // Rota boyunca durak isimleri
-    private List<GecisBilgisi> gecisler; // Duraklar arası geçiş bilgileri
+    private List<String> duraklar;
+    private List<GecisBilgisi> gecisler;
 
     public RotaBilgisi(List<String> duraklar, List<GecisBilgisi> gecisler) {
         this.duraklar = duraklar;

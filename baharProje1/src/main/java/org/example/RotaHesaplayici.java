@@ -31,7 +31,6 @@ public class RotaHesaplayici {
         } else {
             Durak durak = durakBul(mevcutDurak, duraklar);
             if (durak != null) {
-                // 🚏 **Bütün NextStop bağlantılarını kontrol et**
                 for (NextStop baglanti : durak.getNextStops()) {
                     if (!ziyaretEdilen.contains(baglanti.getStopId())) {
                         gecisler.add(new GecisBilgisi(mevcutDurak, baglanti.getStopId(),
@@ -43,13 +42,11 @@ public class RotaHesaplayici {
                     }
                 }
 
-                // 🔄 **TRANSFER VARSA ONU DA KONTROL ET**
                 if (durak.getTransfer() != null) {
                     String transferId = durak.getTransfer().getTransferStopId();
                     if (!ziyaretEdilen.contains(transferId)) {
-                        // **Geçiş bilgisine "transfer" ekleyelim**
                         gecisler.add(new GecisBilgisi(mevcutDurak, transferId,
-                                durak.getTransfer().getTransferUcret(), 0, durak.getTransfer().getTransferSure())); // Transfer ücreti ve süresi manuel eklendi
+                                durak.getTransfer().getTransferUcret(), 0, durak.getTransfer().getTransferSure()));
 
                         dfs(transferId, hedefId, duraklar, mevcutYol, gecisler, tumYollar, ziyaretEdilen);
 

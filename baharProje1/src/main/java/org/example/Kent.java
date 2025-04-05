@@ -1,6 +1,6 @@
 package org.example;
+
 import java.util.List;
-import java.util.Map;
 
 public class Kent {
     private String city;
@@ -11,25 +11,24 @@ public class Kent {
         return city;
     }
 
-    public List<Durak> getDuraklar() {
-        return duraklar;
-    }
-
-    public void setDuraklar(List<Durak> duraklar) {
-        this.duraklar = duraklar;
-    }
-
-    public void setCity(String kent) {
-        this.city = kent;
-    }
-
-    public Taksi getTaxi() {
-        return taxi;
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public void setTaxi(Taksi taxi) {
         this.taxi = taxi;
     }
 
+    public void setDuraklar(List<Durak> duraklar) {
+        this.duraklar = duraklar;
+    }
+
+    public List<Durak> getDuraklar() {
+        return duraklar;
+    }
+
+    public Taksi getTaxi() {
+        return taxi;
+    }
 
 }

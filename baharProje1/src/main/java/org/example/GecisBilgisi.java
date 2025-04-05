@@ -1,7 +1,5 @@
 package org.example;
 
-import java.util.*;
-
 public class GecisBilgisi {
     private String baslangic;
     private String hedef;

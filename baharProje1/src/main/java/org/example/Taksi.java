@@ -8,12 +8,12 @@ public class Taksi {
         return openingFee;
     }
 
-    public void setOpeningFee(double openingFee) {
-        this.openingFee = openingFee;
-    }
-
     public double getCostPerKm() {
         return costPerKm;
+    }
+
+    public void setOpeningFee(double openingFee) {
+        this.openingFee = openingFee;
     }
 
     public void setCostPerKm(double costPerKm) {

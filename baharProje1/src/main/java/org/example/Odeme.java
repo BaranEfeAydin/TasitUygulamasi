@@ -26,8 +26,7 @@ public abstract class Odeme {
             bakiye -= tutar;
             return bakiye;
         } else {
-            System.out.println("Yetersiz bakiye!");
-            return 0;
+            return -1;
         }
     }
 }

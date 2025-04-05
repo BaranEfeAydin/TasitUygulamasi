@@ -7,7 +7,7 @@ public class EnYakinDurak {
 
     public static Durak enYakinDuragiBul(double lat, double lon, List<Durak> duraklar) {
         Durak enYakinDurak = null;
-        minMesafe = Double.MAX_VALUE;  // Mesafe hesaplama başlamadan önce sıfırlıyoruz.
+        minMesafe = Double.MAX_VALUE;
 
         for (Durak durak : duraklar) {
             double mesafe = MesafeHesabi.haversineFormulu(lat, lon, durak.getLat(), durak.getLon());
